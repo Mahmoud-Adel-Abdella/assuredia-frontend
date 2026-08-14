@@ -17,7 +17,6 @@ function Rail({ onNavigate }: { onNavigate?: () => void }) {
   return (
     <aside className="rail">
       <div className="rail-brand">
-        <div className="brand-mark-frame"><img src="/manus-storage/assuredia-official-logo_68f2f53c.png" alt="Assuredia official logo" className="brand-mark" /></div>
         <div>
           <span className="brand-word">assuredia</span>
           <span className="brand-caption">test operations</span>

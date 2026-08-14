@@ -12,7 +12,7 @@ import CreateClientPage from "@/pages/CreateClientPage";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 
 export default function App() {
-  return <ThemeProvider defaultTheme="dark" switchable><AuthProvider><BrowserRouter><Toaster theme="dark" position="bottom-right" toastOptions={{ classNames: { toast: "assuredia-toast" } }} /><Routes>
+  return <ThemeProvider defaultTheme="light" switchable><AuthProvider><BrowserRouter><Toaster theme="light" position="bottom-right" toastOptions={{ classNames: { toast: "assuredia-toast" } }} /><Routes>
     <Route path="/" element={<LandingPage />} />
     <Route path="/auth" element={<AuthPage />} />
     <Route path="/login" element={<Navigate to="/auth" replace />} />
