@@ -6,7 +6,7 @@ import { initials } from "@/lib/format";
 import { useState, type ReactNode } from "react";
 
 const navItems = [
-  { to: "/", label: "Overview", icon: LayoutDashboard },
+  { to: "/dashboard", label: "Overview", icon: LayoutDashboard },
   { to: "/clients", label: "Clients", icon: Users },
   { to: "/clients/new", label: "New client", icon: Workflow },
 ];
@@ -48,7 +48,7 @@ function Rail({ onNavigate }: { onNavigate?: () => void }) {
 }
 
 function pageMeta(pathname: string) {
-  if (pathname === "/") return ["Overview", "A clear read on every active test path."];
+  if (pathname === "/dashboard") return ["Overview", "A clear read on every active test path."];
   if (pathname === "/clients") return ["Clients", "Manage automation environments and their latest signals."];
   if (pathname === "/clients/new") return ["New client", "Register a new test environment and its first flows."];
   if (pathname.startsWith("/clients/")) return ["Client workspace", "Settings, flows, schedules, and run history."];
