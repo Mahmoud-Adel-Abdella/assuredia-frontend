@@ -4,6 +4,7 @@
 */
 @import "tailwindcss";
 @import "tw-animate-css";
+@custom-variant dark (&:is(.dark *));
 
 :root { color-scheme: dark; --bg: #080b10; --surface: #0d1219; --surface-raised: #111821; --surface-soft: #151e28; --line: #202b38; --line-strong: #2e3c4e; --ink: #f2f5f8; --ink-soft: #aeb9c7; --ink-muted: #6f7d8d; --cobalt: #4c7dff; --cobalt-soft: rgba(76,125,255,.14); --cyan: #53d6d4; --green: #4ed39a; --red: #ff6b75; --amber: #eab96a; --ease-out: cubic-bezier(.23,1,.32,1); --ease-in-out: cubic-bezier(.77,0,.175,1); }
 * { box-sizing: border-box; }
@@ -101,6 +102,15 @@ h1, h2, h3, strong { font-family: "Space Grotesk", sans-serif; }
 /* Style review refinement: the mark and entry readout use the same disciplined signal language as the workspace. */
 .brand-mark-frame { display: grid; place-items: center; width: 38px; height: 43px; border: 1px solid rgba(76,125,255,.55); background: rgba(76,125,255,.11); box-shadow: 0 0 22px rgba(76,125,255,.12); }
 .section-actions { display: flex; align-items: center; gap: 8px; }
+.dashboard-theme-toggle { border-color: var(--line-strong); background: var(--surface); color: var(--ink); }
+.dashboard-theme-toggle:hover { color: var(--cobalt); border-color: var(--cobalt); background: var(--surface-soft); }
+.auth-theme-toggle { position: fixed; z-index: 60; top: 20px; right: 20px; width: 42px; height: 42px; border-color: rgba(9,94,232,.36); background: rgba(255,255,255,.84); color: #06185a; box-shadow: 0 14px 34px rgba(9,94,232,.16); backdrop-filter: blur(12px); }
+.dark .auth-theme-toggle { border-color: rgba(53,104,232,.6); background: rgba(8,20,39,.84); color: #fff; }
+.official-logo { display: block; width: auto; height: auto; max-width: 100%; object-fit: contain; border: 0; outline: 0; background: transparent; box-shadow: none; }
+.landing-brand-logo { width: 104px; height: 72px; }
+.dashboard-brand-logo { width: 132px; height: 86px; }
+.auth-desktop-logo { width: 186px; height: 130px; }
+.auth-mobile-logo { width: 120px; height: 84px; }
 .brand-mark-frame .brand-mark, .brand-mark-frame img { width: 32px; height: 36px; object-fit: contain; filter: drop-shadow(0 0 5px rgba(76,125,255,.6)); mix-blend-mode: screen; }
 .login-brand strong { letter-spacing: -.08em; }
 .login-signal-readout { position: absolute; right: 75px; bottom: 88px; width: 214px; padding: 13px; border: 1px solid rgba(76,125,255,.25); background: rgba(8,14,23,.7); box-shadow: 0 15px 45px rgba(0,0,0,.2); }

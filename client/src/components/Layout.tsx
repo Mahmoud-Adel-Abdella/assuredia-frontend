@@ -3,6 +3,9 @@ import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { Activity, Bell, ChevronRight, CircleHelp, LayoutDashboard, LogOut, Settings, ShieldCheck, Users, Workflow, X } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 import { initials } from "@/lib/format";
+import ThemeToggle from "@/components/ThemeToggle";
+import BrandLogo from "@/components/BrandLogo";
+import { toast } from "sonner";
 import { useState, type ReactNode } from "react";
 
 const navItems = [
@@ -17,10 +20,7 @@ function Rail({ onNavigate }: { onNavigate?: () => void }) {
   return (
     <aside className="rail">
       <div className="rail-brand">
-        <div>
-          <span className="brand-word">assuredia</span>
-          <span className="brand-caption">test operations</span>
-        </div>
+        <BrandLogo className="dashboard-brand-logo" />
         {onNavigate && <button className="icon-button rail-close" onClick={onNavigate} aria-label="Close navigation"><X size={18} /></button>}
       </div>
       <div className="rail-section-label">Workspace</div>
@@ -33,8 +33,8 @@ function Rail({ onNavigate }: { onNavigate?: () => void }) {
       </nav>
       <div className="rail-section-label secondary-label">System</div>
       <nav className="rail-nav">
-        <button className="rail-link muted-link" onClick={() => window.alert("Notifications are available from the backend integrations.")}><Bell size={17} strokeWidth={1.8} /><span>Alerts</span><span className="nav-count">0</span></button>
-        <button className="rail-link muted-link" onClick={() => window.alert("Settings are managed per client from the client detail page.")}><Settings size={17} strokeWidth={1.8} /><span>Settings</span></button>
+        <button type="button" className="rail-link muted-link" onClick={() => toast.info("Alerts are available from backend integrations.")}><Bell size={17} strokeWidth={1.8} /><span>Alerts</span><span className="nav-count">0</span></button>
+        <button type="button" className="rail-link muted-link" onClick={() => toast.info("Settings are managed from each client workspace.")}><Settings size={17} strokeWidth={1.8} /><span>Settings</span></button>
       </nav>
       <div className="rail-spacer" />
       <div className="rail-trust"><ShieldCheck size={17} /><div><strong>API connected</strong><span>JWT session · 12h</span></div></div>
@@ -66,7 +66,7 @@ export default function Layout({ children }: { children?: ReactNode }) {
         <header className="topbar">
           <button className="icon-button mobile-menu" onClick={() => setMobileOpen(true)} aria-label="Open navigation"><Activity size={19} /></button>
           <div className="topbar-copy"><div className="eyebrow">ASSUREDIA / CONTROL PLANE</div><h1>{title}</h1><p>{subtitle}</p></div>
-          <div className="topbar-actions"><div className="live-indicator"><span className="pulse-dot" />Live API</div><button className="icon-button" aria-label="Help"><CircleHelp size={18} /></button></div>
+          <div className="topbar-actions"><div className="live-indicator"><span className="pulse-dot" />Live API</div><ThemeToggle className="dashboard-theme-toggle" /><button className="icon-button" aria-label="Help"><CircleHelp size={18} /></button></div>
         </header>
         <div className="page-content">{children || <Outlet />}</div>
       </main>

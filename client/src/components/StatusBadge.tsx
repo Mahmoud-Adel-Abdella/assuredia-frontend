@@ -1,7 +1,9 @@
 /* Signal Atelier: status is a stamped operational signal, never decorative UI. */
 import { Check, Circle, LoaderCircle, X } from "lucide-react";
 
-export default function StatusBadge({ status, label }: { status: "PASS" | "FAIL" | "ACTIVE" | "INACTIVE" | "RUNNING" | "NEVER"; label?: string }) {
+export default function StatusBadge({ status, label }: { status: string | null | undefined; label?: string }) {
+  const normalized = String(status || "NEVER").toUpperCase();
+  const resolved = normalized === "SUCCESS" || normalized === "COMPLETED" ? "PASS" : normalized === "FAILED" || normalized === "ERROR" ? "FAIL" : normalized === "PENDING" || normalized === "IN_PROGRESS" ? "RUNNING" : normalized;
   const map = {
     PASS: { className: "status-pass", icon: Check, text: "PASS" },
     FAIL: { className: "status-fail", icon: X, text: "FAIL" },
@@ -9,7 +11,7 @@ export default function StatusBadge({ status, label }: { status: "PASS" | "FAIL"
     INACTIVE: { className: "status-neutral", icon: Circle, text: "Inactive" },
     RUNNING: { className: "status-running", icon: LoaderCircle, text: "Running" },
     NEVER: { className: "status-neutral", icon: Circle, text: "Never run" },
-  }[status];
+  }[resolved] || { className: "status-neutral", icon: Circle, text: normalized.replace(/_/g, " ") };
   const Icon = map.icon;
-  return <span className={`status-badge ${map.className}`}><Icon size={12} className={status === "RUNNING" ? "spin" : ""} />{label || map.text}</span>;
+  return <span className={`status-badge ${map.className}`}><Icon size={12} className={resolved === "RUNNING" ? "spin" : ""} />{label || map.text}</span>;
 }

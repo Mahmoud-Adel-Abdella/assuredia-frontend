@@ -21,7 +21,10 @@ api.interceptors.response.use(
     if (error.response?.status === 401) {
       localStorage.removeItem("assuredia_token");
       localStorage.removeItem("assuredia_email");
-      if (window.location.pathname !== "/login") window.location.assign("/login");
+      if (window.location.pathname !== "/login" && window.location.pathname !== "/auth") {
+        const from = `${window.location.pathname}${window.location.search}`;
+        window.location.assign(`/login?from=${encodeURIComponent(from)}`);
+      }
     }
     return Promise.reject(error);
   },
@@ -76,7 +79,7 @@ export interface RunRecord {
   id: number;
   flow_id: number;
   flow_name: string;
-  status: "PASS" | "FAIL";
+  status: string | null;
   browser: string;
   env: string;
   total: number;
