@@ -6,7 +6,7 @@ import { toast } from "sonner";
 import { getApiError } from "@/api/client";
 import { useAuth } from "@/context/AuthContext";
 
-const logoUrl = "/manus-storage/assuredia-mark_94d836ed.png";
+const logoUrl = "/manus-storage/assuredia-official-logo_68f2f53c.png";
 
 export default function AuthPage() {
   const { login, isAuthenticated } = useAuth();

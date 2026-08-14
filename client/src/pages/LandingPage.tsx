@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Activity, ArrowRight, Bell, BrainCircuit, Check, CheckCircle2, ChevronDown, Cloud, ImageIcon, LineChart, Moon, Play, Send, Sun } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 
-const logoUrl = "/manus-storage/assuredia-mark_94d836ed.png";
+const logoUrl = "/manus-storage/assuredia-official-logo_68f2f53c.png";
 const navItems = [{ label: "Product", href: "#product", dropdown: true }, { label: "Features", href: "#features" }, { label: "Solutions", href: "#solutions", dropdown: true }, { label: "Pricing", href: "#pricing" }, { label: "About", href: "#about" }];
 const features = [
   { icon: BrainCircuit, title: "AI-Powered Insights", description: "Smart analysis and resilient test paths that stay useful as your product evolves." },
